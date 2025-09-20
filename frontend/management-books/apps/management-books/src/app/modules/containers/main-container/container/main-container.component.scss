@@ -1,0 +1,11 @@
+.main-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    &__content {
+        padding: 2rem;
+        flex-grow: 1;
+        overflow-y: auto;
+    }
+}

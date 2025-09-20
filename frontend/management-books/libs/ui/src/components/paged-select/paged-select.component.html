@@ -1,0 +1,15 @@
+<mat-form-field appearance="fill" class="w-100">
+  <mat-label>{{ label }}</mat-label>
+  <mat-select [formControl]="control" #select (openedChange)="onOpenedChange($event)">
+    @for(item of items; track item.value) {
+    <mat-option [value]="item.value">
+      {{ item.label }}
+    </mat-option>
+    }
+  </mat-select>
+  @if(control?.invalid && (control?.dirty || control?.touched)) {
+  <mat-error>
+    {{ label }} é obrigatório
+  </mat-error>
+  }
+</mat-form-field>

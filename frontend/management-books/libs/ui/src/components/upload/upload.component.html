@@ -1,0 +1,14 @@
+<div class="upload-area" (click)="fileInput.click()">
+  <input type="file" #fileInput (change)="onFileSelected($event)" hidden accept="image/*" />
+
+  @if(imagePreview) {
+  <ng-container>
+    <img [src]="imagePreview" alt="Cover" class="preview" />
+  </ng-container>
+  } @else {
+  <div class="placeholder">
+    <span>Clique para fazer upload da imagem</span>
+  </div>
+  }
+
+</div>

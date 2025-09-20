@@ -1,0 +1,11 @@
+@use '@angular/material' as mat;
+@use 'ngx-toastr/toastr';
+
+
+html {
+  color-scheme: light dark;
+  @include mat.theme((
+    color: mat.$azure-palette,
+    density: 0
+  ));
+}

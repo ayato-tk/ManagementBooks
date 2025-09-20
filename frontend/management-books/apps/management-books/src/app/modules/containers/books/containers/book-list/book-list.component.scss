@@ -1,0 +1,38 @@
+.book-list {
+  padding: 16px;
+
+  .search-field {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 16px;
+  }
+
+  .table-desktop {
+    display: block;
+  }
+
+  .table-mobile {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .table-desktop {
+      display: none;
+    }
+
+    .table-mobile {
+      display: block;
+
+      .book-card {
+        margin-bottom: 12px;
+        padding: 12px;
+      }
+
+      .actions {
+        display: flex;
+        gap: 8px;
+        margin-top: 8px;
+      }
+    }
+  }
+}

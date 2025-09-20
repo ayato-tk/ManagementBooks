@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>{{ data.id ? 'Editar' : 'Criar' }}</h2>
+
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    @if(data.id) {
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>ID</mat-label>
+      <input matInput formControlName="id" type="number" />
+    </mat-form-field>
+    }
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="name" />
+      @if(form.get('name')?.hasError('required')) {
+      <mat-error>
+        O nome é obrigatório
+      </mat-error>
+      }
+      @if(form.get('name')?.hasError('whitespace')) {
+      <mat-error>
+        Não pode conter apenas espaços
+      </mat-error>
+      }
+      @if(form.get('name')?.hasError('minlength')) {
+      <mat-error>
+        Mínimo de 3 caracteres
+      </mat-error>
+      }
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Cancelar</button>
+  <button mat-flat-button color="primary" (click)="save()">{{ data.id ? 'Salvar' : 'Criar' }}</button>
+</div>

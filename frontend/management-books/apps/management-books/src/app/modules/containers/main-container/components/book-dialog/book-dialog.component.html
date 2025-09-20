@@ -1,0 +1,89 @@
+<h2 mat-dialog-title>{{ data.id ? 'Editar' : 'Criar' }}</h2>
+
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    @if(data.id) {
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>ID</mat-label>
+      <input matInput formControlName="id" type="number" />
+    </mat-form-field>
+    }
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>Título</mat-label>
+      <input matInput formControlName="title" />
+      @if(form.get('title')?.hasError('required')) {
+      <mat-error>
+        O título é obrigatório
+      </mat-error>
+      }
+      @if(form.get('title')?.hasError('whitespace')) {
+      <mat-error>
+        Não pode conter apenas espaços
+      </mat-error>
+      }
+      @if(form.get('title')?.hasError('minlength')) {
+      <mat-error>
+        Mínimo de 3 caracteres
+      </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>ISBN</mat-label>
+      <input matInput formControlName="isbn" maxlength="13" />
+      @if(form.get('isbn')?.hasError('required')) {
+      <mat-error>
+        ISBN é obrigatório
+      </mat-error>
+      }
+      @if(form.get('isbn')?.hasError('invalidIsbn')) {
+      <mat-error>
+        ISBN deve ter 10 ou 13 caracteres
+      </mat-error>
+      }
+
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>Autor</mat-label>
+      <input matInput formControlName="author" />
+      @if(form.get('author')?.hasError('required')) {
+      <mat-error>
+        O Autor é obrigatório
+      </mat-error>
+      }
+      @if(form.get('author')?.hasError('whitespace')) {
+      <mat-error>
+        Não pode conter apenas espaços
+      </mat-error>
+      }
+      @if(form.get('author')?.hasError('minlength')) {
+      <mat-error>
+        Mínimo de 3 caracteres
+      </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>Sinopse</mat-label>
+      <textarea matInput formControlName="synopsis" rows="6" maxlength="5000"></textarea>
+      <mat-hint align="end">{{ form.get('synopsis')?.value?.length || 0 }}/5000</mat-hint>
+    </mat-form-field>
+
+    <ui-paged-select [label]="'Gênero'" [control]="form.controls['genreId']"
+      [fetchPage]="fetchGenrePage.bind(this)"></ui-paged-select>
+
+    <ui-paged-select [label]="'Publicadora'" [control]="form.controls['publisherId']"
+      [fetchPage]="fetchPublisherPage.bind(this)"></ui-paged-select>
+
+    <ui-upload [initialImage]="form.get('coverImagePath')?.value"
+      (fileChanged)="form.controls['coverImagePath'].setValue($event)">
+    </ui-upload>
+
+  </form>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Cancelar</button>
+  <button mat-flat-button color="primary" (click)="save()">{{ data.id ? 'Salvar' : 'Criar' }}</button>
+</div>
