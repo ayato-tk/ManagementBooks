@@ -12,7 +12,6 @@ import {
 } from '@management-books/data-access';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
-import { NgScrollbarModule } from 'ngx-scrollbar';
 import { PagedSelectComponent, UploadComponent } from '@management-books/ui';
 
 @Component({
@@ -26,7 +25,6 @@ import { PagedSelectComponent, UploadComponent } from '@management-books/ui';
     MatButtonModule,
     MatOptionModule,
     MatSelectModule,
-    NgScrollbarModule,
     PagedSelectComponent,
     UploadComponent
   ],

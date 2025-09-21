@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx serve management-books"
+    "start": "nx serve management-books",
+    "vercel-build": "sed -i 's|#{API_BASE_URL}#|$API_BASE_URL|g' environments/environment.ts && nx build management-books --prod "
   },
   "private": true,
   "dependencies": {
