@@ -21,7 +21,10 @@ public class CreatBookHandler(IBookRepository bookRepository, ICurrentUserServic
             command.GenreId,
             command.PublisherId,
             currentUserService.UserId
-        );
+        )
+        { 
+            CoverImagePath = command.CoverImagePath
+        };
 
         await bookRepository.AddAsync(book);
         await bookRepository.SaveChangesAsync();
