@@ -20,6 +20,12 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
+      - name: Install dependencies
+        run: dotnet restore ./backend
+
+      - name: Run Unit Tests
+        run: dotnet test ./backend --verbosity normal
+
       - name: Build Docker image
         run: docker build -t ghcr.io/${{ github.repository_owner }}/gestao-livros:latest ./backend
 

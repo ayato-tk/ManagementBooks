@@ -12,7 +12,7 @@ namespace GestaoLivros.Presentation.Controllers;
 [Route("[controller]")]
 public class BookController(IMediator mediator) : ControllerBase
 {
-    //TODO: Criar o find pelo search
+
     [HttpGet]
     public async Task<IActionResult> GetBooks([FromQuery] GetPaginatedBooksQuery query)
     {

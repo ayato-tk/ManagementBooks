@@ -10,7 +10,8 @@ public class UpdatePublisherCommandValidator : AbstractValidator<UpdatePublisher
     private readonly IPublisherRepository _publisherRepository;
     private readonly ICurrentUserService _currentUserService;
 
-    public UpdatePublisherCommandValidator(ICurrentUserService currentUserService, IPublisherRepository publisherRepository)
+    public UpdatePublisherCommandValidator(ICurrentUserService currentUserService,
+        IPublisherRepository publisherRepository)
     {
         _publisherRepository = publisherRepository;
         _currentUserService = currentUserService;
