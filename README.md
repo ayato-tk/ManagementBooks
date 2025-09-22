@@ -121,7 +121,7 @@ dotnet run
 
 1. Navegar para a pasta do frontend:
 ```bash
-cd frontend
+cd frontend/management-books
 ```
 
 2. Instalar dependências:
@@ -138,7 +138,7 @@ export const environment = {
 
 4. Executar o projeto:
 ```bash
-ng serve
+npm start
 ```
 
 5. Abrir no navegador:
